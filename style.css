@@ -1,0 +1,263 @@
+/* ===========================
+   RESET
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:"Segoe UI",Arial,sans-serif;
+    background:#ffffff;
+    color:#333;
+    line-height:1.6;
+}
+
+/* ===========================
+   CONTAINER
+=========================== */
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+}
+
+/* ===========================
+   HERO
+=========================== */
+
+.hero{
+    background:#fff;
+    text-align:center;
+    padding:30px 20px 40px;
+}
+
+.logo{
+    display: block;
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    margin: 0 auto 15px;
+}
+
+.hero h1{
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 12px;
+}
+
+.hero p{
+    max-width:620px;
+    margin:0 auto 24px;
+    font-size:1rem;
+    line-height:1.7;
+    color:#6b7280;
+}
+/* ===========================
+   DOWNLOAD BUTTON
+=========================== */
+
+.download{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:14px;
+    margin-top:10px;
+    margin-bottom:18px;
+    flex-wrap:wrap;
+}
+.download a{
+    display:flex;
+    align-items:center;
+}
+
+.download img{
+    height:60px;
+    width:auto;
+    display:block;
+    transition:.25s ease;
+}
+
+.download img:hover{
+    transform:translateY(-3px);
+}
+
+#playBtn img{
+    height:48px;
+    width:auto;
+}
+
+#iosBtn img{
+    height:54px;
+    width:auto;
+}
+/* ===========================
+   BROSUR
+=========================== */
+
+.brosur{
+    margin-top:18px;
+}
+
+.btn-brosur{
+
+    display:inline-block;
+
+    padding:14px 28px;
+
+    background:#f3f4f6;
+
+    color:#333;
+
+    border-radius:12px;
+
+    border:1px solid #d1d5db;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.btn-brosur:hover{
+
+    background:#e5e7eb;
+
+    transform:translateY(-2px);
+
+}
+
+footer{
+    margin-top:60px;
+    padding:40px 20px;
+    background:#f8f9fa;
+    border-top:1px solid #e5e7eb;
+    text-align:center;
+}
+
+footer h2{
+    margin-bottom:10px;
+    color:#2f3a45;
+}
+
+footer p{
+    margin-bottom:8px;
+    color:#6b7280;
+}
+
+footer small{
+    color:#9ca3af;
+}
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media(max-width:992px){
+
+.hero{
+
+padding:70px 0;
+
+}
+
+.logo{
+
+max-width:260px;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.hero{
+
+padding:60px 0;
+
+}
+
+.logo{
+
+max-width:220px;
+
+}
+
+.download{
+
+flex-direction:column;
+
+gap:15px;
+
+}
+
+.download img{
+
+height:52px;
+
+}
+
+.features{
+
+padding:60px 0;
+
+}
+
+.card{
+
+padding:30px 20px;
+
+}
+
+.hero h1{
+
+line-height:1.2;
+
+}
+
+}
+
+@media(max-width:480px){
+
+.hero{
+
+padding:50px 0;
+
+}
+
+.download img{
+
+height:48px;
+
+}
+
+.card img{
+
+width:60px;
+
+height:60px;
+
+}
+
+.card h3{
+
+font-size:20px;
+
+}
+
+.hero p{
+
+font-size:16px;
+
+}
+
+}
