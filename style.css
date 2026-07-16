@@ -80,42 +80,60 @@ body{
     align-items:center;
 }
 
+/* Hapus semua width global */
 .download img{
     display:block;
-    width:170px;
     height:auto;
     transition:transform .25s ease;
 }
 
-/* Google Play dikecilkan */
+/* Desktop */
 #playBtn img{
-    transform:scale(0.84);
+    width:135px;
 }
 
-/* App Store tetap */
 #iosBtn img{
-    transform:scale(1);
+    width:165px;
 }
 
 .download img:hover{
     transform:translateY(-2px);
 }
 
-#playBtn:hover img{
-    transform:scale(0.84) translateY(-2px);
-}
+/* Tablet */
+@media (max-width:768px){
 
-@media (max-width:480px){
-
-    .download img{
-        width:160px;
+    .download{
+        gap:12px;
     }
 
     #playBtn img{
-        transform:scale(0.82);
+        width:128px;
+    }
+
+    #iosBtn img{
+        width:158px;
     }
 
 }
+
+/* HP */
+@media (max-width:480px){
+
+    .download{
+        gap:10px;
+    }
+
+    #playBtn img{
+        width:122px;
+    }
+
+    #iosBtn img{
+        width:150px;
+    }
+
+}
+
 /* ===========================
    BROSUR
 =========================== */
