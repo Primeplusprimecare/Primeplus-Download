@@ -70,70 +70,19 @@ body{
     display:flex;
     flex-direction:column;
     align-items:center;
-    gap:14px;
+    gap:16px;
     margin:24px 0;
 }
 
 .download a{
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    width:min(85vw,220px);
 }
 
-/* Hapus semua width global */
 .download img{
-    display:block;
+    width:100%;
     height:auto;
-    transition:transform .25s ease;
+    display:block;
 }
-
-/* Desktop */
-#playBtn img{
-    width:135px;
-}
-
-#iosBtn img{
-    width:165px;
-}
-
-.download img:hover{
-    transform:translateY(-2px);
-}
-
-/* Tablet */
-@media (max-width:768px){
-
-    .download{
-        gap:12px;
-    }
-
-    #playBtn img{
-        width:128px;
-    }
-
-    #iosBtn img{
-        width:158px;
-    }
-
-}
-
-/* HP */
-@media (max-width:480px){
-
-    .download{
-        gap:10px;
-    }
-
-    #playBtn img{
-        width:122px;
-    }
-
-    #iosBtn img{
-        width:150px;
-    }
-
-}
-
 /* ===========================
    BROSUR
 =========================== */
