@@ -14,7 +14,7 @@ html{
 
 body{
     font-family:"Segoe UI",Arial,sans-serif;
-    background:#ffffff;
+    background:#fff;
     color:#333;
     line-height:1.6;
 }
@@ -40,18 +40,18 @@ body{
 }
 
 .logo{
-    display: block;
-    width: 100%;
-    max-width: 450px;
-    height: auto;
-    margin: 0 auto 15px;
+    display:block;
+    width:100%;
+    max-width:450px;
+    height:auto;
+    margin:0 auto 15px;
 }
 
 .hero h1{
-    font-size: 28px;
-    font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: 12px;
+    font-size:28px;
+    font-weight:700;
+    line-height:1.2;
+    margin-bottom:12px;
 }
 
 .hero p{
@@ -61,6 +61,7 @@ body{
     line-height:1.7;
     color:#6b7280;
 }
+
 /* ===========================
    DOWNLOAD BUTTON
 =========================== */
@@ -77,8 +78,6 @@ body{
     display:flex;
     justify-content:center;
     align-items:center;
-    width:180px;
-    height:56px;
 }
 
 .download img{
@@ -87,59 +86,19 @@ body{
     transition:transform .25s ease;
 }
 
-/* Google Play diperkecil */
-#playBtn img{
-    width:150px;
-}
-
-/* App Store */
-#iosBtn img{
-    width:170px;
-}
-
 .download img:hover{
     transform:translateY(-2px);
 }
 
-/* Tablet */
-@media (max-width:768px){
-
-    .download a{
-        width:170px;
-        height:54px;
-    }
-
-    #playBtn img{
-        width:142px;
-    }
-
-    #iosBtn img{
-        width:162px;
-    }
-
+/* Desktop */
+#playBtn img{
+    width:135px;
 }
 
-/* HP */
-@media (max-width:480px){
-
-    .download{
-        gap:10px;
-    }
-
-    .download a{
-        width:165px;
-        height:52px;
-    }
-
-    #playBtn img{
-        width:138px;
-    }
-
-    #iosBtn img{
-        width:158px;
-    }
-
+#iosBtn img{
+    width:165px;
 }
+
 /* ===========================
    BROSUR
 =========================== */
@@ -148,35 +107,26 @@ body{
     margin-top:18px;
 }
 
-.btn-brosur{
-
+.btn{
     display:inline-block;
-
     padding:14px 28px;
-
     background:#f3f4f6;
-
     color:#333;
-
     border-radius:12px;
-
     border:1px solid #d1d5db;
-
     text-decoration:none;
-
     font-weight:600;
-
     transition:.3s;
-
 }
 
-.btn-brosur:hover{
-
+.btn:hover{
     background:#e5e7eb;
-
     transform:translateY(-2px);
-
 }
+
+/* ===========================
+   FOOTER
+=========================== */
 
 footer{
     margin-top:60px;
@@ -199,106 +149,71 @@ footer p{
 footer small{
     color:#9ca3af;
 }
+
 /* ===========================
    RESPONSIVE
 =========================== */
 
-@media(max-width:992px){
+@media (max-width:992px){
 
-.hero{
+    .hero{
+        padding:70px 20px;
+    }
 
-padding:70px 0;
-
-}
-
-.logo{
-
-max-width:260px;
+    .logo{
+        max-width:260px;
+    }
 
 }
 
-}
+@media (max-width:768px){
 
-@media(max-width:768px){
+    .hero{
+        padding:60px 20px;
+    }
 
-.hero{
+    .logo{
+        max-width:220px;
+    }
 
-padding:60px 0;
+    .download{
+        gap:12px;
+    }
 
-}
+    #playBtn img{
+        width:128px;
+    }
 
-.logo{
+    #iosBtn img{
+        width:156px;
+    }
 
-max-width:220px;
-
-}
-
-.download{
-
-flex-direction:column;
-
-gap:15px;
-
-}
-
-.download img{
-
-height:52px;
+    .hero h1{
+        line-height:1.2;
+    }
 
 }
 
-.features{
+@media (max-width:480px){
 
-padding:60px 0;
+    .hero{
+        padding:50px 20px;
+    }
 
-}
+    .download{
+        gap:10px;
+    }
 
-.card{
+    #playBtn img{
+        width:122px;
+    }
 
-padding:30px 20px;
+    #iosBtn img{
+        width:150px;
+    }
 
-}
-
-.hero h1{
-
-line-height:1.2;
-
-}
-
-}
-
-@media(max-width:480px){
-
-.hero{
-
-padding:50px 0;
-
-}
-
-.download img{
-
-height:48px;
-
-}
-
-.card img{
-
-width:60px;
-
-height:60px;
-
-}
-
-.card h3{
-
-font-size:20px;
-
-}
-
-.hero p{
-
-font-size:16px;
-
-}
+    .hero p{
+        font-size:16px;
+    }
 
 }
