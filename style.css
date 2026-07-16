@@ -64,24 +64,30 @@ body{
 /* ===========================
    DOWNLOAD BUTTON
 =========================== */
-
 .download{
     display:flex;
     justify-content:center;
     align-items:center;
     gap:14px;
-    margin-top:10px;
-    margin-bottom:18px;
     flex-wrap:wrap;
 }
+
 .download a{
     display:flex;
     align-items:center;
 }
 
-.download img{
-    height:60px;
+#playBtn img{
+    height:50px;   /* diperkecil */
     width:auto;
+}
+
+#iosBtn img{
+    height:56px;   /* tetap */
+    width:auto;
+}
+
+.download img{
     display:block;
     transition:.25s ease;
 }
@@ -90,16 +96,6 @@ body{
     transform:translateY(-3px);
 }
 
-.download img{
-    height:56px;
-    width:auto;
-    display:block;
-    transition:.25s ease;
-}
-
-.download img:hover{
-    transform:translateY(-3px);
-}
 /* ===========================
    BROSUR
 =========================== */
