@@ -64,58 +64,56 @@ body{
 /* ===========================
    DOWNLOAD BUTTON
 =========================== */
-/* ===========================
-   DOWNLOAD BUTTON
-=========================== */
 
 .download{
     display:flex;
-    justify-content:center;
+    flex-direction:column;
     align-items:center;
     gap:14px;
-    margin-top:10px;
-    margin-bottom:18px;
-    flex-wrap:wrap;
+    margin:24px 0;
 }
 
 .download a{
+    width:220px;              /* lebar kedua tombol sama */
     display:flex;
-    align-items:center;
     justify-content:center;
+    align-items:center;
 }
 
 .download img{
+    max-width:100%;
+    height:auto;
     display:block;
-    width:auto;
-    transition:.25s ease;
+    transition:transform .25s ease;
 }
 
 .download img:hover{
     transform:translateY(-3px);
 }
 
-/* Desktop */
+/* Badge Google Play sedikit diperkecil */
 #playBtn img{
-    height:50px;
+    width:205px;
 }
 
+/* Badge App Store dibuat memenuhi lebar container */
 #iosBtn img{
-    height:56px;
+    width:190px;
 }
 
 /* Tablet */
 @media (max-width:768px){
 
-    .download{
-        gap:12px;
+    .download a{
+        width:200px;
     }
 
     #playBtn img{
-        height:46px;
+        width:186px;
     }
 
     #iosBtn img{
-        height:52px;
+        width:172px;
     }
 
 }
@@ -124,15 +122,19 @@ body{
 @media (max-width:480px){
 
     .download{
-        gap:10px;
+        gap:12px;
+    }
+
+    .download a{
+        width:180px;
     }
 
     #playBtn img{
-        height:42px;
+        width:168px;
     }
 
     #iosBtn img{
-        height:48px;
+        width:156px;
     }
 
 }
