@@ -69,7 +69,6 @@ body{
     display:flex;
     flex-direction:column;
     align-items:center;
-    justify-content:center;
     gap:14px;
     margin:24px 0;
 }
@@ -78,7 +77,8 @@ body{
     display:flex;
     justify-content:center;
     align-items:center;
-    width:180px; /* Lebar tombol dibuat sama */
+    width:180px;
+    height:56px;
 }
 
 .download img{
@@ -87,62 +87,56 @@ body{
     transition:transform .25s ease;
 }
 
-.download img:hover{
-    transform:translateY(-3px);
-}
-
-/* ===========================
-   DESKTOP
-=========================== */
-
+/* Google Play diperkecil */
 #playBtn img{
-    width:162px; /* Diperkecil */
+    width:150px;
 }
 
+/* App Store */
 #iosBtn img{
-    width:180px; /* Tetap */
+    width:170px;
 }
 
-/* ===========================
-   TABLET
-=========================== */
+.download img:hover{
+    transform:translateY(-2px);
+}
 
+/* Tablet */
 @media (max-width:768px){
 
     .download a{
         width:170px;
+        height:54px;
     }
 
     #playBtn img{
-        width:152px;
+        width:142px;
     }
 
     #iosBtn img{
-        width:170px;
+        width:162px;
     }
 
 }
 
-/* ===========================
-   MOBILE
-=========================== */
-
+/* HP */
 @media (max-width:480px){
 
     .download{
-        gap:12px;
+        gap:10px;
     }
 
     .download a{
-        width:160px;
+        width:165px;
+        height:52px;
     }
 
     #playBtn img{
-        width:144px;
+        width:138px;
     }
 
     #iosBtn img{
-        width:160px;
+        width:158px;
     }
 
 }
