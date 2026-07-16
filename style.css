@@ -74,14 +74,14 @@ body{
 }
 
 .download a{
-    width:min(85vw,220px);
-    max-width:220px;
+    width:min(80vw,190px);
+    max-width:190px;
 }
 
 .download img{
-    display:block;
     width:100%;
     height:auto;
+    display:block;
 }
 /* ===========================
    BROSUR
