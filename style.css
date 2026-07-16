@@ -64,31 +64,29 @@ body{
 /* ===========================
    DOWNLOAD BUTTON
 =========================== */
+/* ===========================
+   DOWNLOAD BUTTON
+=========================== */
+
 .download{
     display:flex;
     justify-content:center;
     align-items:center;
     gap:14px;
+    margin-top:10px;
+    margin-bottom:18px;
     flex-wrap:wrap;
 }
 
 .download a{
     display:flex;
     align-items:center;
-}
-
-#playBtn img{
-    height:50px;   /* diperkecil */
-    width:auto;
-}
-
-#iosBtn img{
-    height:56px;   /* tetap */
-    width:auto;
+    justify-content:center;
 }
 
 .download img{
     display:block;
+    width:auto;
     transition:.25s ease;
 }
 
@@ -96,6 +94,48 @@ body{
     transform:translateY(-3px);
 }
 
+/* Desktop */
+#playBtn img{
+    height:50px;
+}
+
+#iosBtn img{
+    height:56px;
+}
+
+/* Tablet */
+@media (max-width:768px){
+
+    .download{
+        gap:12px;
+    }
+
+    #playBtn img{
+        height:46px;
+    }
+
+    #iosBtn img{
+        height:52px;
+    }
+
+}
+
+/* HP */
+@media (max-width:480px){
+
+    .download{
+        gap:10px;
+    }
+
+    #playBtn img{
+        height:42px;
+    }
+
+    #iosBtn img{
+        height:48px;
+    }
+
+}
 /* ===========================
    BROSUR
 =========================== */
