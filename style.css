@@ -73,58 +73,14 @@ body{
 }
 
 .download a{
-    width:220px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    width:min(85vw,220px);
+    max-width:220px;
 }
 
-/* Ukuran dasar */
 .download img{
-    display:block;
+    width:100%;
     height:auto;
-}
-
-/* App Store */
-#iosBtn img{
-    width:200px;
-}
-
-/* Google Play diperkecil sedikit */
-#playBtn img{
-    width:190px;
-}
-
-@media (max-width:768px){
-
-    .download a{
-        width:200px;
-    }
-
-    #iosBtn img{
-        width:180px;
-    }
-
-    #playBtn img{
-        width:171px;
-    }
-
-}
-
-@media (max-width:480px){
-
-    .download a{
-        width:180px;
-    }
-
-    #iosBtn img{
-        width:165px;
-    }
-
-    #playBtn img{
-        width:157px;
-    }
-
+    display:block;
 }
 /* ===========================
    BROSUR
