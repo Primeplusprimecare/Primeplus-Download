@@ -78,18 +78,20 @@ body{
     display:flex;
     justify-content:center;
     align-items:center;
+    width:180px;
+    height:56px;
 }
 
 .download img{
     display:block;
-    width:170px;
+    max-width:100%;
     height:auto;
     transition:transform .25s ease;
 }
 
-/* Google Play dikecilkan */
+/* Google Play diperkecil secara visual */
 #playBtn img{
-    transform:scale(0.84);
+    transform:scale(0.82);
 }
 
 /* App Store tetap */
@@ -98,25 +100,12 @@ body{
 }
 
 .download img:hover{
-    transform:translateY(-2px);
+    transform:scale(1) translateY(-2px);
 }
 
 #playBtn:hover img{
-    transform:scale(0.84) translateY(-2px);
+    transform:scale(0.82) translateY(-2px);
 }
-
-@media (max-width:480px){
-
-    .download img{
-        width:160px;
-    }
-
-    #playBtn img{
-        transform:scale(0.82);
-    }
-
-}
-
 /* ===========================
    BROSUR
 =========================== */
