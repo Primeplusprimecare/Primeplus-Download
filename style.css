@@ -82,21 +82,39 @@ body{
 
 .download img{
     display:block;
+    width:170px;
     height:auto;
     transition:transform .25s ease;
+}
+
+/* Google Play dikecilkan */
+#playBtn img{
+    transform:scale(0.84);
+}
+
+/* App Store tetap */
+#iosBtn img{
+    transform:scale(1);
 }
 
 .download img:hover{
     transform:translateY(-2px);
 }
 
-/* Desktop */
-#playBtn img{
-    width:140px;
+#playBtn:hover img{
+    transform:scale(0.84) translateY(-2px);
 }
 
-#iosBtn img{
-    width:165px;
+@media (max-width:480px){
+
+    .download img{
+        width:160px;
+    }
+
+    #playBtn img{
+        transform:scale(0.82);
+    }
+
 }
 
 /* ===========================
