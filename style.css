@@ -71,17 +71,17 @@ body{
     flex-direction:column;
     align-items:center;
     gap:16px;
-    margin:24px 0;
 }
 
 .download a{
     width:min(85vw,220px);
+    max-width:220px;
 }
 
 .download img{
+    display:block;
     width:100%;
     height:auto;
-    display:block;
 }
 /* ===========================
    BROSUR
