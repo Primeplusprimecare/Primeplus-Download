@@ -83,17 +83,18 @@ body{
 
 .download img{
     display:block;
+    width:100%;
     height:auto;
 }
 
-/* App Store */
-#iosBtn img{
-    width:100%;
-}
-
-/* Google Play hanya diperkecil sedikit */
+/* Google Play sedikit diperkecil */
 #playBtn img{
     width:94%;
+}
+
+/* App Store tetap */
+#iosBtn img{
+    width:100%;
 }
 /* ===========================
    BROSUR
