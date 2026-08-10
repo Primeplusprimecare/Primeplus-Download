@@ -52,40 +52,39 @@ body{
 
 /* ===========================
    DOWNLOAD BUTTON
+   Keep each store badge at its own natural proportion.
 =========================== */
 .download{
     display:flex;
-    flex-direction:column;
+    flex-direction:row;
     align-items:center;
-    gap:16px;
-    margin:24px 0 0;
+    justify-content:center;
+    gap:14px;
+    margin:24px 0;
 }
 
 .download a{
-    width:min(85vw,220px);
-    max-width:220px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    transition:transform .2s ease;
-}
-
-.download a:hover{
-    transform:translateY(-2px);
+    display:block;
+    flex:0 0 auto;
+    line-height:0;
 }
 
 .download img{
     display:block;
-    width:100%;
-    height:auto;
+    width:auto;
+    height:52px;
+    max-width:100%;
+    object-fit:contain;
 }
 
 #playBtn img{
-    width:94%;
+    width:auto;
+    height:52px;
 }
 
 #iosBtn img{
-    width:100%;
+    width:auto;
+    height:52px;
 }
 
 /* ===========================
@@ -289,7 +288,7 @@ footer small{
 =========================== */
 @media(max-width:768px){
     .hero{
-        padding:45px 20px 35px;
+        padding:60px 20px;
     }
 
     .logo{
@@ -297,19 +296,15 @@ footer small{
     }
 
     .download{
-        gap:12px;
+        flex-direction:row;
+        gap:10px;
     }
 
-    .download a{
-        width:auto;
-    }
-
-    #playBtn img{
-        width:128px;
-    }
-
+    .download img,
+    #playBtn img,
     #iosBtn img{
-        width:156px;
+        height:46px;
+        width:auto;
     }
 
     .flipbook-section{
@@ -339,19 +334,18 @@ footer small{
 
 @media(max-width:480px){
     .hero{
-        padding:35px 20px 25px;
+        padding:50px 20px;
     }
 
     .download{
-        gap:10px;
+        gap:8px;
     }
 
-    #playBtn img{
-        width:122px;
-    }
-
+    .download img,
+    #playBtn img,
     #iosBtn img{
-        width:150px;
+        height:40px;
+        width:auto;
     }
 
     .hero p{
