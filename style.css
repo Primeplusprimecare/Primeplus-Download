@@ -1,7 +1,6 @@
 /* ===========================
    RESET
 =========================== */
-
 *{
     margin:0;
     padding:0;
@@ -20,23 +19,12 @@ body{
 }
 
 /* ===========================
-   CONTAINER
+   HERO - tetap sederhana seperti versi awal
 =========================== */
-
-.container{
-    width:90%;
-    max-width:1200px;
-    margin:auto;
-}
-
-/* ===========================
-   HERO
-=========================== */
-
 .hero{
     background:#fff;
     text-align:center;
-    padding:30px 20px 40px;
+    padding:30px 20px 45px;
 }
 
 .logo{
@@ -70,7 +58,7 @@ body{
     flex-direction:column;
     align-items:center;
     gap:16px;
-    margin:24px 0;
+    margin:24px 0 0;
 }
 
 .download a{
@@ -79,6 +67,11 @@ body{
     display:flex;
     justify-content:center;
     align-items:center;
+    transition:transform .2s ease;
+}
+
+.download a:hover{
+    transform:translateY(-2px);
 }
 
 .download img{
@@ -87,46 +80,190 @@ body{
     height:auto;
 }
 
-/* Google Play sedikit diperkecil */
 #playBtn img{
     width:94%;
 }
 
-/* App Store tetap */
 #iosBtn img{
     width:100%;
 }
+
 /* ===========================
-   BROSUR
+   FLIPBOOK
 =========================== */
-
-.brosur{
-    margin-top:18px;
+.flipbook-section{
+    width:min(1100px,94%);
+    margin:10px auto 0;
+    padding:30px 0 20px;
 }
 
-.btn{
+.flipbook-heading{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.flipbook-heading span{
     display:inline-block;
-    padding:14px 28px;
-    background:#f3f4f6;
-    color:#333;
-    border-radius:12px;
-    border:1px solid #d1d5db;
-    text-decoration:none;
-    font-weight:600;
-    transition:.3s;
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:.16em;
+    color:#1594c4;
+    margin-bottom:5px;
 }
 
-.btn:hover{
-    background:#e5e7eb;
-    transform:translateY(-2px);
+.flipbook-heading h2{
+    font-size:30px;
+    line-height:1.2;
+    color:#26323d;
+    margin-bottom:6px;
+}
+
+.flipbook-heading p{
+    color:#6b7280;
+    font-size:14px;
+}
+
+.flipbook-viewer{
+    position:relative;
+    width:100%;
+    min-height:520px;
+    height:min(72vh,820px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    background:#f2f5f7;
+    border:1px solid #e2e8ee;
+    border-radius:18px;
+    box-shadow:0 12px 35px rgba(31,50,65,.10);
+    touch-action:pan-y;
+}
+
+.flip-page{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    max-width:100%;
+    max-height:100%;
+    transition:transform .25s ease;
+    perspective:1400px;
+}
+
+.flip-paper{
+    background:#fff;
+    box-shadow:0 12px 35px rgba(0,0,0,.25);
+    overflow:hidden;
+    animation:pageIn .3s ease;
+}
+
+.flip-paper canvas{
+    display:block;
+    max-width:none;
+}
+
+@keyframes pageIn{
+    from{
+        opacity:.4;
+        transform:rotateY(-8deg) scale(.985);
+    }
+    to{
+        opacity:1;
+        transform:rotateY(0) scale(1);
+    }
+}
+
+.flip-loading{
+    position:absolute;
+    z-index:3;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:5px;
+    color:#334155;
+    text-align:center;
+}
+
+.flip-loading small{
+    color:#94a3b8;
+}
+
+.flip-spinner{
+    width:32px;
+    height:32px;
+    border:3px solid #dbe3e8;
+    border-top-color:#1594c4;
+    border-radius:50%;
+    animation:spin .8s linear infinite;
+    margin-bottom:5px;
+}
+
+@keyframes spin{
+    to{transform:rotate(360deg)}
+}
+
+.flip-controls{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:7px;
+    margin-top:14px;
+}
+
+.flip-controls button{
+    min-width:40px;
+    height:40px;
+    padding:0 10px;
+    border:1px solid #d1d9df;
+    background:#fff;
+    color:#334155;
+    border-radius:9px;
+    font-size:18px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.flip-controls button:hover{
+    background:#eef7fb;
+    border-color:#9fd3e5;
+}
+
+.flip-controls button:disabled{
+    opacity:.4;
+    cursor:not-allowed;
+}
+
+#pageInfo{
+    min-width:70px;
+    text-align:center;
+    font-size:14px;
+    font-weight:600;
+    color:#64748b;
+}
+
+.flip-hint{
+    text-align:center;
+    color:#94a3b8;
+    font-size:12px;
+    margin-top:10px;
+}
+
+.flip-error{
+    margin:15px auto 0;
+    max-width:650px;
+    padding:12px 15px;
+    border-radius:10px;
+    background:#fff1f1;
+    border:1px solid #f0b5b5;
+    color:#9b2c2c;
+    text-align:center;
 }
 
 /* ===========================
    FOOTER
 =========================== */
-
 footer{
-    margin-top:60px;
+    margin-top:45px;
     padding:40px 20px;
     background:#f8f9fa;
     border-top:1px solid #e5e7eb;
@@ -150,23 +287,9 @@ footer small{
 /* ===========================
    RESPONSIVE
 =========================== */
-
-@media (max-width:992px){
-
+@media(max-width:768px){
     .hero{
-        padding:70px 20px;
-    }
-
-    .logo{
-        max-width:260px;
-    }
-
-}
-
-@media (max-width:768px){
-
-    .hero{
-        padding:60px 20px;
+        padding:45px 20px 35px;
     }
 
     .logo{
@@ -177,6 +300,10 @@ footer small{
         gap:12px;
     }
 
+    .download a{
+        width:auto;
+    }
+
     #playBtn img{
         width:128px;
     }
@@ -185,16 +312,34 @@ footer small{
         width:156px;
     }
 
-    .hero h1{
-        line-height:1.2;
+    .flipbook-section{
+        width:94%;
+        padding-top:20px;
     }
 
+    .flipbook-heading h2{
+        font-size:25px;
+    }
+
+    .flipbook-viewer{
+        min-height:420px;
+        height:70vh;
+        border-radius:14px;
+    }
+
+    .flip-controls{
+        gap:5px;
+    }
+
+    .flip-controls button{
+        min-width:36px;
+        height:36px;
+    }
 }
 
-@media (max-width:480px){
-
+@media(max-width:480px){
     .hero{
-        padding:50px 20px;
+        padding:35px 20px 25px;
     }
 
     .download{
@@ -213,4 +358,20 @@ footer small{
         font-size:16px;
     }
 
+    .flipbook-heading h2{
+        font-size:23px;
+    }
+
+    .flipbook-heading p{
+        font-size:13px;
+    }
+
+    .flipbook-viewer{
+        min-height:430px;
+        height:65vh;
+    }
+
+    .flip-hint{
+        font-size:11px;
+    }
 }
