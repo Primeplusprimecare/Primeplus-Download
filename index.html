@@ -1,61 +1,268 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="description" content="Primeplus - Berobat Mudah Tanpa Antri">
 <title>Primeplus</title>
-
 <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
 
 <section class="hero">
+    <img src="Logo_Primeplus_by_Primecare-01.png" class="logo" alt="Primeplus">
 
-<img src="Logo_Primeplus_by_Primecare-01.png" class="logo" alt="Primeplus">
+    <h1>Berobat Mudah Tanpa Antri</h1>
 
-<h1>Berobat Mudah Tanpa Antri</h1>
+    <p>
+        Primeplus hadir untuk memudahkan Anda mengakses layanan kesehatan,
+        membuat janji temu, dan berkonsultasi dengan dokter kapan saja
+        dan di mana saja.
+    </p>
 
-<p>
-Primeplus hadir untuk memudahkan Anda mengakses layanan kesehatan,
-membuat janji temu, dan berkonsultasi dengan dokter kapan saja
-dan di mana saja.
-</p>
+    <div class="download">
+        <a id="playBtn"
+           href="https://play.google.com/store/apps/details?id=id.primecare.primeplus"
+           target="_blank" rel="noopener noreferrer">
+            <img src="google-play.svg" alt="Google Play">
+        </a>
 
-<div class="download">
-    <a href="https://play.google.com/store/apps/details?id=id.primecare.primeplus" target="_blank">
-        <img src="google-play.svg" alt="Google Play">
-    </a>
-
-    <a href="https://apps.apple.com/id/app/primeplus/id6785361573" target="_blank">
-        <img src="app-store.svg" alt="App Store">
-    </a>
-</div>
-
-  <div class="brosur">
-<a href="brosur.html" class="btn">
-📖 Lihat Brosur Digital
-</a>
-  </div>
+        <a id="iosBtn"
+           href="https://apps.apple.com/id/app/primeplus/id6785361573"
+           target="_blank" rel="noopener noreferrer">
+            <img src="app-store.svg" alt="App Store">
+        </a>
+    </div>
 </section>
 
+<!-- FLIPBOOK LANGSUNG TAMPIL -->
+<section class="flipbook-section" aria-label="Flipbook Primeplus">
+    <div class="flipbook-heading">
+        <span>PRIMEPLUS</span>
+        <h2>Flipbook Primeplus</h2>
+        <p>Geser halaman atau gunakan tombol navigasi untuk melihat panduan.</p>
+    </div>
+
+    <div class="flipbook-viewer">
+        <div id="flipLoading" class="flip-loading">
+            <div class="flip-spinner"></div>
+            <strong>Memuat Flipbook Primeplus...</strong>
+            <small>Halaman ditampilkan bertahap agar lebih ringan.</small>
+        </div>
+
+        <div id="flipPage" class="flip-page"></div>
+    </div>
+
+    <div class="flip-controls">
+        <button id="firstPage" type="button" aria-label="Halaman pertama">⏮</button>
+        <button id="prevPage" type="button" aria-label="Halaman sebelumnya">‹</button>
+        <span id="pageInfo">Memuat...</span>
+        <button id="nextPage" type="button" aria-label="Halaman berikutnya">›</button>
+        <button id="lastPage" type="button" aria-label="Halaman terakhir">⏭</button>
+        <button id="zoomOut" type="button" aria-label="Perkecil">−</button>
+        <button id="zoomIn" type="button" aria-label="Perbesar">+</button>
+        <button id="fullScreen" type="button" aria-label="Layar penuh">⛶</button>
+    </div>
+
+    <p class="flip-hint">Di HP, geser halaman ke kiri atau kanan.</p>
+
+    <p id="flipError" class="flip-error" hidden>
+        Flipbook gagal dimuat. Pastikan file <strong>brosur.pdf</strong>
+        berada di folder yang sama dengan index.html.
+    </p>
+</section>
 
 <footer>
-
-<h2>Primeplus</h2>
-
-<p>Sehat Kamu, Prioritas Kami.</p>
-
-<small>
-© 2026 Primeplus
-</small>
-
+    <h2>Primeplus</h2>
+    <p>Sehat Kamu, Prioritas Kami.</p>
+    <small>© 2026 Primeplus</small>
 </footer>
 
-<script src="script.js"></script>
+<script type="module">
+import * as pdfjsLib from
+    "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.4.168/pdf.min.mjs";
+
+pdfjsLib.GlobalWorkerOptions.workerSrc =
+    "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.4.168/pdf.worker.min.mjs";
+
+const PDF_URL = "brosur.pdf";
+
+const flipPage = document.getElementById("flipPage");
+const loading = document.getElementById("flipLoading");
+const errorBox = document.getElementById("flipError");
+const pageInfo = document.getElementById("pageInfo");
+
+const firstBtn = document.getElementById("firstPage");
+const prevBtn = document.getElementById("prevPage");
+const nextBtn = document.getElementById("nextPage");
+const lastBtn = document.getElementById("lastPage");
+const zoomOutBtn = document.getElementById("zoomOut");
+const zoomInBtn = document.getElementById("zoomIn");
+const fullscreenBtn = document.getElementById("fullScreen");
+
+let pdf = null;
+let currentPage = 1;
+let zoom = 1;
+let rendering = false;
+let queuedPage = null;
+const cache = new Map();
+
+function getFitScale(width, height) {
+    const maxWidth = Math.min(window.innerWidth - 36, 1100);
+    const maxHeight = Math.min(window.innerHeight * 0.72, 820);
+    return Math.min(maxWidth / width, maxHeight / height, 1.25);
+}
+
+async function renderPdfPage(number) {
+    if (cache.has(number)) return cache.get(number);
+
+    const page = await pdf.getPage(number);
+    const base = page.getViewport({ scale: 1 });
+    const scale = getFitScale(base.width, base.height) * zoom;
+    const viewport = page.getViewport({ scale });
+
+    const canvas = document.createElement("canvas");
+    const context = canvas.getContext("2d", { alpha: false });
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+    canvas.width = Math.ceil(viewport.width * dpr);
+    canvas.height = Math.ceil(viewport.height * dpr);
+    canvas.style.width = viewport.width + "px";
+    canvas.style.height = viewport.height + "px";
+
+    await page.render({
+        canvasContext: context,
+        viewport,
+        transform: dpr !== 1 ? [dpr, 0, 0, dpr, 0, 0] : null
+    }).promise;
+
+    cache.set(number, canvas);
+    return canvas;
+}
+
+async function showPage(number) {
+    if (!pdf || number < 1 || number > pdf.numPages) return;
+
+    if (rendering) {
+        queuedPage = number;
+        return;
+    }
+
+    rendering = true;
+    currentPage = number;
+
+    pageInfo.textContent = currentPage + " / " + pdf.numPages;
+    firstBtn.disabled = currentPage === 1;
+    prevBtn.disabled = currentPage === 1;
+    nextBtn.disabled = currentPage === pdf.numPages;
+    lastBtn.disabled = currentPage === pdf.numPages;
+
+    try {
+        const canvas = await renderPdfPage(currentPage);
+
+        flipPage.innerHTML = "";
+        const pageBox = document.createElement("div");
+        pageBox.className = "flip-paper";
+        pageBox.appendChild(canvas);
+        flipPage.appendChild(pageBox);
+
+        // Render/cache one neighboring page only.
+        if (currentPage < pdf.numPages) {
+            renderPdfPage(currentPage + 1).catch(() => {});
+        } else if (currentPage > 1) {
+            renderPdfPage(currentPage - 1).catch(() => {});
+        }
+    } catch (err) {
+        console.error(err);
+        errorBox.hidden = false;
+    } finally {
+        rendering = false;
+        if (queuedPage !== null) {
+            const next = queuedPage;
+            queuedPage = null;
+            showPage(next);
+        }
+    }
+}
+
+function resetCache() {
+    cache.clear();
+}
+
+firstBtn.onclick = () => showPage(1);
+prevBtn.onclick = () => showPage(currentPage - 1);
+nextBtn.onclick = () => showPage(currentPage + 1);
+lastBtn.onclick = () => showPage(pdf?.numPages || 1);
+
+zoomInBtn.onclick = () => {
+    if (zoom >= 1.8) return;
+    zoom = Math.min(1.8, +(zoom + 0.15).toFixed(2));
+    resetCache();
+    showPage(currentPage);
+};
+
+zoomOutBtn.onclick = () => {
+    if (zoom <= 0.7) return;
+    zoom = Math.max(0.7, +(zoom - 0.15).toFixed(2));
+    resetCache();
+    showPage(currentPage);
+};
+
+fullscreenBtn.onclick = async () => {
+    if (!document.fullscreenElement) {
+        await document.documentElement.requestFullscreen?.();
+    } else {
+        await document.exitFullscreen?.();
+    }
+};
+
+// Swipe untuk HP
+let touchStartX = null;
+
+flipPage.addEventListener("touchstart", (event) => {
+    touchStartX = event.changedTouches[0].clientX;
+}, { passive: true });
+
+flipPage.addEventListener("touchend", (event) => {
+    if (touchStartX === null) return;
+
+    const distance = event.changedTouches[0].clientX - touchStartX;
+
+    if (Math.abs(distance) > 45) {
+        showPage(currentPage + (distance < 0 ? 1 : -1));
+    }
+
+    touchStartX = null;
+}, { passive: true });
+
+window.addEventListener("resize", () => {
+    if (!pdf) return;
+    resetCache();
+    showPage(currentPage);
+});
+
+async function startFlipbook() {
+    try {
+        pdf = await pdfjsLib.getDocument({
+            url: PDF_URL,
+            disableAutoFetch: false,
+            disableStream: false,
+            rangeChunkSize: 65536
+        }).promise;
+
+        loading.remove();
+        showPage(1);
+    } catch (err) {
+        console.error(err);
+        loading.remove();
+        errorBox.hidden = false;
+        pageInfo.textContent = "Gagal memuat";
+    }
+}
+
+startFlipbook();
+</script>
 
 </body>
 </html>
