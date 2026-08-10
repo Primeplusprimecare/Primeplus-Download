@@ -55,7 +55,7 @@ body {
     line-height: 0;
 }
 
-/* Kunci tinggi yang sama agar rasio badge presisi & seimbang */
+/* Base style untuk semua badge di Desktop */
 .download img,
 #playBtn img,
 #iosBtn img {
@@ -268,10 +268,17 @@ footer small {
         gap: 10px;
     }
     
-    .download img,
+    /* Ukuran Google Play di Tablet */
     #playBtn img,
-    #iosBtn img {
+    .download img:first-child {
         height: 44px !important;
+        width: auto !important;
+    }
+
+    /* Penyesuaian khusus App Store agar secara visual tidak terlalu besar */
+    #iosBtn img,
+    .download img:last-child {
+        height: 40px !important;
         width: auto !important;
     }
     
@@ -310,10 +317,17 @@ footer small {
         gap: 8px;
     }
     
-    .download img,
+    /* Ukuran Google Play di HP */
     #playBtn img,
-    #iosBtn img {
-        height: 38px !important;
+    .download img:first-child {
+        height: 40px !important;
+        width: auto !important;
+    }
+
+    /* Penyesuaian khusus App Store di HP (dibuat sedikit lebih pendek agar sejajar secara visual) */
+    #iosBtn img,
+    .download img:last-child {
+        height: 36px !important;
         width: auto !important;
     }
     
