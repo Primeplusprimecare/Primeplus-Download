@@ -71,20 +71,16 @@ body{
 
 .download img{
     display:block;
-    width:auto;
-    height:52px;
+    width:270px;
+    height:auto;
     max-width:100%;
     object-fit:contain;
 }
 
-#playBtn img{
-    width:auto;
-    height:52px;
-}
-
+#playBtn img,
 #iosBtn img{
-    width:auto;
-    height:52px;
+    width:270px;
+    height:auto;
 }
 
 /* ===========================
@@ -344,8 +340,8 @@ footer small{
     .download img,
     #playBtn img,
     #iosBtn img{
-        height:40px;
-        width:auto;
+        width:165px;
+        height:auto;
     }
 
     .hero p{
